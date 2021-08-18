@@ -1,6 +1,10 @@
 from django.urls import path
-from .views import index
+from django.views.generic import RedirectView
+import core.views
+
 
 urlpatterns = [
-    path('', index),
+    path('', RedirectView.as_view(url='agenda')),
+    path('evento/<titulo>/', core.views.evento),
+    path('agenda', core.views.lista_eventos),
 ]
